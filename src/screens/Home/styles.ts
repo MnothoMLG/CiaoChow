@@ -25,6 +25,9 @@ export const Footer = styled.View`
 position: absolute;
 width:  100%;
 height: 92px;
+align-items: center;
+justify-content: center;
+padding: 22px;
 left: 0px;
 bottom: 0px;
 background: #FFFFFF;
