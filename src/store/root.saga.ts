@@ -1,6 +1,6 @@
 import {all} from 'redux-saga/effects';
-import {watchDataSagas} from './data/sagas';
+import { watchAuthSagas } from './auth/sagas';
 
 export default function* sagas() {
-  yield all([watchDataSagas()]);
+  yield all([watchAuthSagas()]);
 }

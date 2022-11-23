@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -23,5 +22,5 @@ export default function App() {
 const EntryPoint = () => {
   const {onBoarded} = useSelector(getAuthState);
   console.log({onBoarded})
-  return onBoarded ?  <RootNavigation /> : <AppIntro /> 
+  return onBoarded && false?  <RootNavigation /> : <AppIntro /> 
 }

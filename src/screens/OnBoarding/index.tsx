@@ -1,9 +1,8 @@
-import React, { useDebugValue } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { useDispatch } from 'react-redux';
 import { Gent, Lady, LogoIcon } from '../../assets';
-import {Text, Image, Row, AppButton, Padding, Margin} from '../../components'
+import {Text, Row, AppButton, Padding, Margin} from '../../components'
 import { setOnBoarding } from '../../store/auth/actions';
 import { colors } from '../../theme';
 
@@ -51,6 +50,11 @@ export const AppIntro = () => {
         );
     }
 
-    return <AppIntroSlider  renderNextButton={()=> null} renderDoneButton={()=> null} renderItem={renderItem} data={slides} />;
+    return <AppIntroSlider
+        dotStyle={{width: 8, height: 8, backgroundColor: colors.background.secondary}}
+        activeDotStyle={{width: 8, height: 8, backgroundColor: colors.typography.static}}
+        renderNextButton={()=> null}
+       renderDoneButton={()=> null}
+       renderItem={renderItem} data={slides} />;
 
 }

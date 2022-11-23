@@ -4,6 +4,7 @@ import {AuthDataState} from './types';
 
 const INITIAL_STATE: AuthDataState = {
   onBoarded: false,
+  signedIn: false,
 };
 
 export const authReducer = createReducer(INITIAL_STATE, builder => {
