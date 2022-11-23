@@ -26,7 +26,7 @@ const AuthStack = () => (
 );
 const RootNavigation: React.FC = () => {
 
-  const signedIn = true
+  const signedIn = false //
   return (
     <NavigationContainer>
       <StatusBar barStyle={'dark-content'} />

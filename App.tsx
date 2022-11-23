@@ -20,7 +20,7 @@ export default function App() {
 }
 
 const EntryPoint = () => {
-  const {onBoarded} = useSelector(getAuthState);
-  console.log({onBoarded})
-  return onBoarded && false?  <RootNavigation /> : <AppIntro /> 
+  const authState = useSelector(getAuthState);
+  console.log({authState})
+  return authState.onBoarded ?  <RootNavigation /> : <AppIntro /> 
 }

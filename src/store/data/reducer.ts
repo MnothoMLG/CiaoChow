@@ -1,8 +1,7 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {fetachAllSuccess, loadMoreSuccess, setSort} from './actions';
-import {DataState} from './types';
+import {fetachAllSuccess } from './actions';
 
-const INITIAL_STATE: DataState = {
+const INITIAL_STATE = {
   sort: 'Hot',
   after: '',
   posts: [],
@@ -16,20 +15,4 @@ export const dataReducer = createReducer(INITIAL_STATE, builder => {
         return {...state, ...payload};
       }
     })
-    .addCase(setSort, (state, action) => {
-      if (action.payload) {
-        const {payload} = action;
-        return {...state, ...payload};
-      }
-    })
-    .addCase(loadMoreSuccess, (state, action) => {
-      if (action.payload) {
-        const {payload} = action;
-        return {
-          ...state,
-          after: payload.after,
-          posts: [...state.posts, ...payload.posts],
-        };
-      }
-    });
 });

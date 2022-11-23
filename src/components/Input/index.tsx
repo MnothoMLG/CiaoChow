@@ -11,7 +11,6 @@ interface IProps extends TextInputProps {
   error?: string;
   label?: string;
   required?: boolean;
-  touched?: FormikTouched<unknown> | boolean;
   secureTextEntry?: boolean;
   placeholder?: string;
   placeholderTextColor?: string;
@@ -22,7 +21,6 @@ interface IProps extends TextInputProps {
 
 const Input = ({
   style = {},
-  touched,
   label,
   required,
   error,
@@ -32,6 +30,7 @@ const Input = ({
     props.onChangeText && props.onChangeText(text);
   };
   const [focused, setFocused] = useState(false);
+  const [touched, setTouched] = useState(false);
 
   return (
     <>
@@ -55,6 +54,7 @@ const Input = ({
           }}
           onBlur={() => {
             setFocused(false);
+            setTouched(true);
             props.onBlur && props.onBlur();
           }}
         />

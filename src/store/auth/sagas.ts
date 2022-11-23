@@ -1,20 +1,27 @@
 import {AxiosResponse} from 'axios';
 import {takeLatest, put, call} from 'redux-saga/effects';
 import {client} from '../../api/api';
-import { registerError, registerRequest } from './actions';
-import { UserDataInterface } from './types';
+import { setToken } from '../../api/tokenData';
+import { registerError, registerRequest, registerSuccess } from './actions';
+import { AuthenticateUserResponse, UserDataInterface } from './types';
 
 
 export function* registerUser({ payload }: { payload: UserDataInterface; type: string }) {
 
-    console.log("register user payload")
+    console.log("register user payload" , payload)
     try {
-      const response: AxiosResponse<unknown>= yield call(() => client.post("/auth/local/register", payload));
+      const response: AxiosResponse<AuthenticateUserResponse>= yield call(() => client.post("/auth/local/register", payload));
 
-      console.log("register user response ", {response})
+        if (response.data) { 
+            console.log(" the data from the response ", response.data)
+
+            yield setToken(response.data.jwt)
+            yield put (registerSuccess(response.data))
+        }
+
     } catch (err) {
 
-        console.log("an error occured  ====>", {err})
+        console.log("an error occured  ====>", err , err.response)
       yield put(
         registerError({
           message: err.message,

@@ -20,6 +20,7 @@ const store = configureStore({
   devTools: true,
   middleware: [sagaMiddleware],
 });
+
 const persistor = persistStore(store);
 sagaMiddleware.run(sagas);
 

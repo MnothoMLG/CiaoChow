@@ -11,6 +11,7 @@ client.interceptors.request.use(async (config) => {
   try {
     const token =  await getToken();
 
+    console.log({token})
     if (token && config ) {
       config!.headers!["Authorization"] = `Bearer ${token}`;
     }

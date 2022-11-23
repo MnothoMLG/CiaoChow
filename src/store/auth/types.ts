@@ -5,21 +5,17 @@ export interface AuthDataState {
 }
 
 export interface UserDataInterface {
+  id: string;
   username: string;
   email: string;
-  password: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface AuthenticateUserResponse {
     jwt: string;
-    user: {
-        id: string;
-        username: string;
-        email: string;
-        provider: string;
-        confirmed: boolean;
-        blocked: boolean;
-        createdAt: Date;
-        updatedAt: Date;
-    }
+    user: UserDataInterface;
 }

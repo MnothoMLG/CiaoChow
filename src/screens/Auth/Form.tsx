@@ -45,11 +45,11 @@ const AuthForm : FC<Props> = ({register, submit }) => {
 
       <Padding pl={20} pr={20} style={{flex: 1, width: '100%', alignItems: 'center'}}>
 
-        {register && <Input onChangeText={handleChange('username')} onFocus={()=> setFieldTouched('username')}  error={errors.username} touched={touched.username} value={values.username} label={"username"} placeholder={"muncher"}  />}
+        {register && <Input onChangeText={handleChange('username')} onFocus={()=> setFieldTouched('username')}  error={errors.username} value={values.username} label={"username"} placeholder={"muncher"}  />}
 
-        <Input onChangeText={handleChange('email')} onFocus={()=> setFieldTouched('email')} error={errors.email} touched={touched.email}  value={values.email} label={"email"}  placeholder="yourmail@mail.com"  />
+        <Input onChangeText={handleChange('email')} onFocus={()=> setFieldTouched('email')} error={errors.email} value={values.email} label={"email"}  placeholder="yourmail@mail.com"  />
 
-        <Input onChangeText={handleChange('password')} onFocus={()=> setFieldTouched('password')}  error={errors.password} touched={touched.password}  value={values.password}  secureTextEntry  label={"password"}  placeholder={"your password"} />
+        <Input onChangeText={handleChange('password')} onFocus={()=> setFieldTouched('password')}  error={errors.password} value={values.password}  secureTextEntry  label={"password"}  placeholder={"your password"} />
         <Margin mt={8} />
         <AppButton onPress={()=> submit(values)} rounded  fullWidth label={title} />
 

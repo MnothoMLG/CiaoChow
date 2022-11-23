@@ -7,15 +7,21 @@ import { Formik } from 'formik';
 import strings from '../../constants/strings';
 import { colors } from '../../theme';
 import AuthForm from './Form';
-import { useNavigation } from '@react-navigation/native';
-import routes from '../../navigation/routes';
+import { useDispatch } from 'react-redux';
+import { registerRequest } from '../../store/auth/actions';
+import { UserDataInterface } from '../../store/auth/types';
 
 
 const Register = () => {
 
+  const dispatch = useDispatch();
   return (
     <AuthForm register 
-    submit={(values) => {console.log({values})}} />
+      submit={(values) => {
+        console.log({values})
+        dispatch(registerRequest(values as UserDataInterface))
+      }} 
+    />
   );
 };
 
