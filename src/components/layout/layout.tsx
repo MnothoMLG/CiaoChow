@@ -1,6 +1,6 @@
-import {View} from 'react-native';
+import {View, ViewStyle} from 'react-native';
 import styled from 'styled-components/native';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export const Center = styled.View`
   width: 100%;
@@ -66,7 +66,9 @@ export function Padding({
   children,
   style,
 }: {
-  [key: string]: number | Element;
+  [key: string]: number | ReactNode | ViewStyle;
+  style: ViewStyle;
+  children?: ReactNode;
 }) {
   return (
     <View
