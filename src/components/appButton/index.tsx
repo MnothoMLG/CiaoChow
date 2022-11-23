@@ -59,7 +59,7 @@ const textStyle = StyleSheet.create({
     color: colors.typography.blue,
   },
   light: {
-    color: colors.typography.static,
+    color: colors.background.primary,
   },
   dark: {
     color: colors.typography.blue,
@@ -85,7 +85,7 @@ const bodyStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.typography.static,
   },
   dark: {
     height: 54,

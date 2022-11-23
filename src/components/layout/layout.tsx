@@ -16,7 +16,9 @@ export function Margin({
   children,
   style,
 }: {
-  [key: string]: number | Element;
+  [key: string]: number | Element | ViewStyle | ReactNode; //could just extend ViewProps
+  style: ViewStyle;
+  children?: ReactNode;
 }) {
   return (
     <View

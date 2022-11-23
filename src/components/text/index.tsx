@@ -7,6 +7,7 @@ interface Props extends TextProps {
   bold?: boolean;
   align?: string;
   xtraBold?: boolean;
+  thin?: boolean;
   size?: number;
   color?: string;
   ml?: number;
@@ -21,7 +22,7 @@ export const Text: FC<Props> = styled(RnText)`
   flex-wrap: wrap;
   text-align: ${(props: Props) => (props.align ? props.align : 'left')};
   font-weight: ${(props: Props) =>
-    `${props.bold ? '600' : props.xtraBold ? '700' : '500'}`};
+    `${props.bold ? '600' : props.xtraBold ? '700' : props.thin ? '400' : '500'}`};
   margin-left: ${(props: Props) => `${props.ml || 0}px`};
   margin-right: ${(props: Props) => `${props.mr || 0}px`};
   margin-bottom: ${(props: Props) => `${props.mb || 0}px`};
