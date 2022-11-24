@@ -1,20 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import styles, { Footer, NavBar } from './styles';
 import { AppButton , Text, ImageSlider, Padding } from '../../components';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import { colors } from '../../theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetachAllRequest } from '../../store/data/actions';
+import { getChowDataState } from '../../store/data/selectors';
+import { generateNumber } from '../../util/radNumGenerator';
+
 
 const Home = () => {
   const [] = useState(false);
   const [index, setIndex] = React.useState(0);
+  const {chow} = useSelector(getChowDataState);
+  const [option, setOption] = useState(generateNumber(chow.length))
+  const dispatch = useDispatch();
   const [routes] = React.useState([
     { key: 'first', title: 'Description' },
     { key: 'second', title: 'Nutrition facts' },
   ]);
 
+
+
   const url = 'https://images.unsplash.com/photo-1597429554033-86c7f86d0cbe?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=800&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY2OTE0ODI5Nw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1900'
 
+  useEffect(()=> {
+      dispatch(fetachAllRequest())
+  })
+
+  const nextOption = () => setOption(generateNumber(chow.length))
   const RenderInfo = ({text}: {text: string}) => (
     <ScrollView>
       <Padding pl={28} pr={28} pt={38} pb={24} style={{ flex: 1}} >

@@ -1,10 +1,9 @@
 import {createReducer} from '@reduxjs/toolkit';
 import {fetachAllSuccess } from './actions';
+import { IEntry, Chow } from './types';
 
-const INITIAL_STATE = {
-  sort: 'Hot',
-  after: '',
-  posts: [],
+const INITIAL_STATE : { chow : IEntry<Chow>[]} = {
+  chow: []
 };
 
 export const dataReducer = createReducer(INITIAL_STATE, builder => {

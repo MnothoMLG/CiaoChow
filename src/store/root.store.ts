@@ -8,7 +8,7 @@ import {configureStore} from '@reduxjs/toolkit';
 const config = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['authReducer'],
+  whitelist: [],
   debug: true, //to get useful logging
 };
 

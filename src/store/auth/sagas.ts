@@ -2,9 +2,8 @@ import {AxiosResponse} from 'axios';
 import {takeLatest, put, call} from 'redux-saga/effects';
 import {client} from '../../api/api';
 import { setToken } from '../../api/tokenData';
-import { registerError, registerRequest, registerSuccess } from './actions';
-import { AuthenticateUserResponse, UserDataInterface } from './types';
-
+import { logInError, logInRequest, logInSuccess, registerError, registerRequest, registerSuccess } from './actions';
+import { AuthenticateUserResponse, LoginDataInterface, UserDataInterface } from './types';
 
 export function* registerUser({ payload }: { payload: UserDataInterface; type: string }) {
 
@@ -20,7 +19,6 @@ export function* registerUser({ payload }: { payload: UserDataInterface; type: s
         }
 
     } catch (err) {
-
         console.log("an error occured  ====>", err , err.response)
       yield put(
         registerError({
@@ -29,9 +27,36 @@ export function* registerUser({ payload }: { payload: UserDataInterface; type: s
         }),
       );
     }
-  }
+}
 
+export function* loginUser({ payload }: { payload: LoginDataInterface; type: string }) {
+
+  console.log("login user payload" , payload);
+
+  try {
+    const response: AxiosResponse<AuthenticateUserResponse>= yield call(() => client.post("/auth/local", payload));
+
+    console.log(" data ====> ", {response})
+
+    if (response.data) { 
+        console.log(" the data from the response ", response.data)
+        yield setToken(response.data.jwt)
+        yield put (logInSuccess(response.data))
+    }
+
+  } catch (err) {
+
+      console.log("an error occured  ====>", err , err.response)
+    yield put(
+      logInError({
+        message: err.message,
+        statusCode: err?.response.status,
+      }),
+    );
+  }
+}
 
 export function* watchAuthSagas() {
     yield takeLatest(registerRequest.type, registerUser);
+    yield takeLatest(logInRequest.type, loginUser);
 }

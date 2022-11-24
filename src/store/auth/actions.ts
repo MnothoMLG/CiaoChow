@@ -1,12 +1,12 @@
 import {createAction} from '@reduxjs/toolkit';
-import { AuthenticateUserResponse, UserDataInterface } from './types';
+import { AuthenticateUserResponse, LoginDataInterface, UserDataInterface } from './types';
 
 export const setOnBoarding = createAction<{onBoarded: boolean}>(
   '@AUTH/SET_ON_BOARDING_STATE',
 );
 
 export const LOG_IN_LOADING_KEY = "@AUTH/LOG_IN";
-export const logInRequest = createAction<UserDataInterface>("@AUTH/LOG_IN_REQUEST");
+export const logInRequest = createAction<LoginDataInterface>("@AUTH/LOG_IN_REQUEST");
 export const logInSuccess = createAction<AuthenticateUserResponse>("@AUTH/LOG_IN_API_SUCCESS");
 export const logInError = createAction<{}>("@AUTH/LOG_IN_API_ERROR");
 

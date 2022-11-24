@@ -9,19 +9,19 @@ import {
   fetachAllRequest,
   fetachAllSuccess,
 } from './actions';
+import { Chow, IEntry } from './types';
 
 const {error} = strings;
 
 export function* fetchData() {
   try {
-    const response: AxiosResponse<unknown> = yield call(() =>
+    const response: AxiosResponse<IEntry<Chow>[]> = yield call(() =>
       client.get(`/chows?populate=*`),
     );
-    const data = response.data;
-
-
-    console.log("fetch all response ", {data})
-    // yield put(fetachAllSuccess({posts: data.children, after: data.after}));
+    const {data} = response;
+    console.log("fetch all response ", data)
+  
+    yield put(fetachAllSuccess({chow: data}));
   } catch (err) {
     yield put(fetachAllError());
     yield put(

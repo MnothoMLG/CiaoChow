@@ -15,6 +15,11 @@ export interface UserDataInterface {
   updatedAt: Date;
 }
 
+export interface LoginDataInterface {
+  identifier: string;
+  password: string;
+}
+
 export interface AuthenticateUserResponse {
     jwt: string;
     user: UserDataInterface;
