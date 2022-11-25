@@ -56,13 +56,13 @@ const textStyle = StyleSheet.create({
     color: colors.typography.static,
   },
   clear: {
-    color: colors.typography.blue,
+    color: colors.background.primary,
   },
   light: {
     color: colors.background.primary,
   },
   dark: {
-    color: colors.typography.blue,
+    color: colors.background.primary,
   },
   bold: {
     fontWeight: "600",

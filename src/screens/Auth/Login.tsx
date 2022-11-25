@@ -9,8 +9,6 @@ const Login = () => {
   return (
     <AuthForm 
      submit={(values) => {
-      console.log( "logging in" ,{ values})
-        console.log({values})
         dispatch(logInRequest({identifier: values.email, password: values.password}))
     }} />
   );

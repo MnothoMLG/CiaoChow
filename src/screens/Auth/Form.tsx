@@ -23,9 +23,9 @@ const AuthForm : FC<Props> = ({register, submit }) => {
     <Formik
       enableReinitialize
       initialValues={{
-        email: "",
+        email: "Mnotho.mlg@gmail.com",
         username: "",
-        password: "",
+        password: "Mnotho123",
       }}
       onSubmit={() => {
         return;
@@ -35,7 +35,6 @@ const AuthForm : FC<Props> = ({register, submit }) => {
       {({
         handleChange,
         setFieldTouched,
-        touched,
         errors,
         values,
       }) => (

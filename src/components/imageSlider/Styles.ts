@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
   PAGINATION_DOT_SELECTED: {
     backgroundColor: colors.typography.static,
-    width: 16,
+    width: PAGINATION_DOT_SIZE,
   },
 });
 

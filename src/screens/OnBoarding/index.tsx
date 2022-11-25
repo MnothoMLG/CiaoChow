@@ -37,7 +37,7 @@ export const AppIntro = () => {
             <Margin mt={52} mb={52} size={17}>
                 <LogoIcon />
             </Margin>
-            <Row  alignHorizontal="center">
+            <Row  justify="center">
                 <Lady/>
                 <Gent />
             </Row>

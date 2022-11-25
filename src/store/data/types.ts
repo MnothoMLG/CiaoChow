@@ -10,7 +10,7 @@ export interface Chow  {
     createdAt:Date;
     updatedAt:Date;
     publishedAt:Date;
-    image: {
+    Image: {
         data: IEntry<ImageInterface>[]
     }
 }

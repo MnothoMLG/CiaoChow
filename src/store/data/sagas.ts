@@ -3,7 +3,6 @@ import {takeLatest, put, call} from 'redux-saga/effects';
 import {client} from '../../api/api';
 import strings from '../../constants/strings';
 import {setAndShowFeedback} from '../alert/actions';
-import { store } from '../root.store';
 import {
   fetachAllError,
   fetachAllRequest,
@@ -15,13 +14,11 @@ const {error} = strings;
 
 export function* fetchData() {
   try {
-    const response: AxiosResponse<IEntry<Chow>[]> = yield call(() =>
-      client.get(`/chows?populate=*`),
+    const response: AxiosResponse<{data : IEntry<Chow>[]}> = yield call(() =>
+      client.get(`/api/chows?populate=*`),
     );
-    const {data} = response;
-    console.log("fetch all response ", data)
-  
-    yield put(fetachAllSuccess({chow: data}));
+    const {data} = response;  
+    yield put(fetachAllSuccess({chow: data.data}));
   } catch (err) {
     yield put(fetachAllError());
     yield put(

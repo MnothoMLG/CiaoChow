@@ -1,6 +1,7 @@
 export default {
   home: {
     title: 'A subreddit for cute and cuddly pictures',
+    nah: "Nah! Find Something else"
   },
   common: {
     apply: 'Apply',

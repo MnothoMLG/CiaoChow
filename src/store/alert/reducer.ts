@@ -4,7 +4,6 @@ import {AlertState} from './types';
 
 const INITIAL_STATE: AlertState = {
   visible: false,
-  variant: 'success',
   message: '',
   link: '',
   left: undefined,

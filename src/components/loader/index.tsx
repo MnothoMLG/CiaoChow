@@ -7,9 +7,10 @@ import {Margin} from '../layout/layout';
 import {Text} from '..';
 import strings from '../../constants/strings';
 import { LOG_IN_LOADING_KEY, REGISTER_LOADING_KEY } from '../../store/auth/actions';
+import { FETCH_ALL_LOADING_KEY } from '../../store/data/actions';
 
 export function LoadingOverlay() {
-  const isOpen = useLoading(REGISTER_LOADING_KEY, LOG_IN_LOADING_KEY);
+  const isOpen = useLoading(REGISTER_LOADING_KEY, LOG_IN_LOADING_KEY, FETCH_ALL_LOADING_KEY);
 
   return (
     <Modal transparent style={styles.span} visible={isOpen}>

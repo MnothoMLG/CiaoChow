@@ -1,4 +1,3 @@
-import { StatusBar } from 'react-native';
 import {StyleSheet} from 'react-native';
 import styled from 'styled-components/native'
 import {colors} from '../../theme';
@@ -9,6 +8,11 @@ const styles = StyleSheet.create({
     paddingTop: 341,
     alignItems: 'center',
     backgroundColor: colors.typography.static,
+  },
+  imageSlider: {position: 'absolute', top: 0, height: 371},
+  tabContainer: { 
+    borderTopLeftRadius: 32, borderTopRightRadius: 32, 
+    flex: 1, width: '100%', backgroundColor : colors.typography.static
   },
   span: {width: '100%'},
   containerStyle: {

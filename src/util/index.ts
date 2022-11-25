@@ -1,7 +1,13 @@
+import { IEntry, ImageInterface } from '../store/data/types';
+import {BASE_URL} from '../config/env.json';
+
 export const generateNumber = (len: number) => Math.floor(Math.random() * len);
 
+export const getFullURL = (path: string) => `${BASE_URL}${path}`
 
-export const hasImageData = (image: ImageInterface | Asset | undefined) => Boolean(image?.fields?.file);
+export const getImageUrls = (data: IEntry<ImageInterface>[]) => {
 
-export const getImageUrls = (heroImage: ImageInterface, imageGallery: ImageInterface[]) =>
-  [...(hasImageData(heroImage) ? [heroImage] : []), ...(imageGallery || [])].map(getImagePath);
+    console.log({data})
+    
+    return data?.length ?
+  [...(data).map((entry: IEntry<ImageInterface>) => getFullURL(entry.attributes.url))] : []}
