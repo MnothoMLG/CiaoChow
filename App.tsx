@@ -27,7 +27,9 @@ export default function App() {
 const EntryPoint = () => {
   const authState = useSelector(getAuthState);
   const [fontsLoaded] = useFonts({
-    'Inter': require('./src/assets/fonts/Inter.ttf'),
+    'Inter': require('./src/assets/fonts/Inter-Regular.ttf'),
+    'Inter-Bold': require('./src/assets/fonts/Inter-Bold.ttf'),
+    'Inter-Thin': require('./src/assets/fonts/Inter-Light.ttf'),
   });
 
   useEffect(()=> {

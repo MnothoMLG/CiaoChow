@@ -21,8 +21,8 @@ export const Text: FC<Props> = styled(RnText)`
   font-size: ${(props: Props) => `${props.size ? props.size : 13}px`};
   flex-wrap: wrap;
   text-align: ${(props: Props) => (props.align ? props.align : 'left')};
-  font-weight: ${(props: Props) =>
-    `${props.bold ? '600' : props.xtraBold ? '700' : props.thin ? '400' : '500'}`};
+  font-family: ${(props: Props) =>
+    `${props.bold ? 'Inter-Bold' : props.thin ? 'Inter-Light' : 'Inter-Regular'}`};
   margin-left: ${(props: Props) => `${props.ml || 0}px`};
   margin-right: ${(props: Props) => `${props.mr || 0}px`};
   margin-bottom: ${(props: Props) => `${props.mb || 0}px`};

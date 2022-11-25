@@ -12,11 +12,11 @@ const AuthHeader = ({register}: {register?: boolean}) => {
       <View style={styles.container}> 
         <Ellipse height="489px" width={Dimensions.get('window').width} style={styles.ellipse} />
 
-          <TouchableOpacity onPress={()=> canGoBack() && goBack()} style={styles.back}>
+         {register ? null : <TouchableOpacity onPress={()=> canGoBack() && goBack()} style={styles.back}>
             <BackArrow />
-          </TouchableOpacity>
+        </TouchableOpacity> }
 
-        <Text size={34} mb={110} color={"#fff"}> 
+        <Text bold size={34} mb={100} color={"#fff"}> 
           {register? strings.auth.register : strings.auth.login}
         </Text>
         {register ? <Lady /> : <Gent />}
