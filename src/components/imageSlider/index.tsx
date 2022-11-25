@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { View, FlatList, NativeSyntheticEvent, NativeScrollEvent, ViewStyle } from 'react-native';
-import { Image } from '..';
+import { View, FlatList, NativeSyntheticEvent, Text, NativeScrollEvent, ViewStyle } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Image, Row } from '..';
 import styles from './Styles';
+import { colors } from '../../theme';
 
 const ImageSlider: FC<{
   urls?: string[];
@@ -28,17 +30,29 @@ const ImageSlider: FC<{
   );
 
   const Pagination = (
-    <View style={styles.PAGINATION}>
+    <Row justify="center" >
       {urls?.map((_, index) => (
         <View key={index} style={[styles.PAGINATION_DOT, currentIndex === index ? styles.PAGINATION_DOT_SELECTED : {}]} />
       ))}
-    </View>
+    </Row>
   );
 
   return (
     <View style={style}>
       {Carousel}
-      {Pagination}
+
+      <LinearGradient
+        // Background Linear Gradient
+        style={styles.PAGINATION} 
+        start={{x : 0, y: 1}}
+        end={{x:0, y:0}}
+        colors={[colors.background.dark, 'transparent']}
+
+      >
+              {Pagination}
+
+      </LinearGradient>
+
     </View>
   );
 };

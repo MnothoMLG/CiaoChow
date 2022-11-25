@@ -10,7 +10,6 @@ export const logInRequest = createAction<LoginDataInterface>("@AUTH/LOG_IN_API_R
 export const logInSuccess = createAction<AuthenticateUserResponse>("@AUTH/LOG_IN_API_SUCCESS");
 export const logInError = createAction<{}>("@AUTH/LOG_IN_API_ERROR");
 
-
 export const REGISTER_LOADING_KEY = "@AUTH/REGISTER";
 export const registerRequest = createAction<UserDataInterface>("@AUTH/REGISTER_API__REQUEST");
 export const registerSuccess = createAction<AuthenticateUserResponse>("@AUTH/REGISTER_API_SUCCESS");

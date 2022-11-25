@@ -19,12 +19,11 @@ const styles = StyleSheet.create({
   },
   PAGINATION: {
     width,
-    flexDirection: 'row',
-    height: 20,
+    height: 120,
     alignSelf: 'center',
     justifyContent: 'center',
     position: 'absolute',
-    bottom: 36,
+    bottom: 0,
   },
   PAGINATION_DOT: {
     borderRadius: PAGINATION_DOT_SIZE,
@@ -33,11 +32,16 @@ const styles = StyleSheet.create({
     height: PAGINATION_DOT_SIZE,
     backgroundColor: PAGINATION_DOT_UNSELECTED_COLOR,
   },
-
   PAGINATION_DOT_SELECTED: {
     backgroundColor: colors.typography.static,
     width: PAGINATION_DOT_SIZE,
   },
+  gradient: {
+    position: 'absolute',
+    backgroundColor: "red",
+    bottom: 200,
+    width: '100%'
+  }
 });
 
 export default styles;
