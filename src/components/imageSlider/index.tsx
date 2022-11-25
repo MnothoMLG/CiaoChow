@@ -40,19 +40,14 @@ const ImageSlider: FC<{
   return (
     <View style={style}>
       {Carousel}
-
       <LinearGradient
-        // Background Linear Gradient
         style={styles.PAGINATION} 
         start={{x : 0, y: 1}}
         end={{x:0, y:0}}
-        colors={[colors.background.dark, 'transparent']}
-
+        colors={[colors.background.dark, colors.background.transparent]}
       >
-              {Pagination}
-
+          {Pagination}
       </LinearGradient>
-
     </View>
   );
 };

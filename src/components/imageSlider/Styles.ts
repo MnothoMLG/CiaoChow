@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
   },
   PAGINATION: {
     width,
-    height: 120,
+    height: 163,
     alignSelf: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 52,
     position: 'absolute',
     bottom: 0,
   },

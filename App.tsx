@@ -9,8 +9,10 @@ import { AppIntro } from './src/screens/OnBoarding';
 import { getAuthState } from './src/store/auth/selectors';
 import { clearToken } from './src/api/tokenData';
 import { AlertPopUp } from './src/components/alertPopUp';
+import { useFonts } from 'expo-font';
 
 export default function App() {
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor} loading={<ActivityIndicator />}>
@@ -23,12 +25,16 @@ export default function App() {
 }
 
 const EntryPoint = () => {
+  const authState = useSelector(getAuthState);
+  const [fontsLoaded] = useFonts({
+    'Inter': require('./src/assets/fonts/Inter.ttf'),
+  });
 
   useEffect(()=> {
       clearToken();
   },[])
 
-  const authState = useSelector(getAuthState);
+  if (!fontsLoaded) return null
 
   return authState.onBoarded ?  <RootNavigation /> : <AppIntro /> 
 }
