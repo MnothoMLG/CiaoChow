@@ -9,6 +9,8 @@ export function loadingReducer(state = {}, action: any) {
 
   const [, requestName, requestState] = matches;
 
+  console.log({requestName , requestState })
+
   return {
     ...state,
     [requestName]: requestState === 'REQUEST',

@@ -10,7 +10,6 @@ import { AppButton } from '../appButton';
 export const AlertPopUp: FC = () => {
   const { title, message, visible, right, left } = useSelector(getAlertState);
   const dispatch = useDispatch();
-
   const close = () => dispatch(closeAlert());
 
   return (
@@ -21,7 +20,7 @@ export const AlertPopUp: FC = () => {
             {title}
           </Text>
 
-          <Text color={colors.typography.body} mb={24} mt={16}>
+          <Text color={colors.typography.body} mb={24} mt={36}>
             {message}
           </Text>
           <Row justify="flex-end">
@@ -29,9 +28,9 @@ export const AlertPopUp: FC = () => {
               <AppButton
                 {...left}
                 textSize={14}
-                onPress={e => {
+                onPress={() => {
                   close();
-                  left.onPress && left.onPress(e);
+                  left.onPress && left.onPress();
                 }}
                 variant="clear"
                 style={styles.button}
@@ -42,9 +41,9 @@ export const AlertPopUp: FC = () => {
               <AppButton
                 {...right}
                 textSize={14}
-                onPress={e => {
+                onPress={() => {
                   close();
-                  right.onPress && right.onPress(e);
+                  right.onPress && right.onPress();
                 }}
                 style={styles.button}
               />

@@ -6,7 +6,7 @@ import {FormikErrors, FormikTouched} from 'formik';
 import { Margin } from '../layout/layout';
 
 interface IProps extends TextInputProps {
-  style: Record<string, unknown> | Record<string, unknown>[];
+  style?: Record<string, unknown> | Record<string, unknown>[];
   value: string;
   error?: string;
   label?: string;

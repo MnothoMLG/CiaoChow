@@ -3,6 +3,7 @@ import {takeLatest, put, call} from 'redux-saga/effects';
 import {client} from '../../api/api';
 import strings from '../../constants/strings';
 import {setAndShowFeedback} from '../alert/actions';
+import { store } from '../root.store';
 import {
   fetachAllError,
   fetachAllRequest,
@@ -32,18 +33,14 @@ export function* fetchData() {
         right: {
           ...error.right,
           onPress: () => {
-            // store.dispatch(fetachAllRequest({sort}));
+            store.dispatch(fetachAllRequest());
           },
         },
-        variant: 'success',
         visible: true,
       }),
     );
-    //if for some weird reason, the delay crashes ;]
   }
 }
-
-
 
 export function* watchDataSagas() {
   //Could use yield all and have one saga listen for both actions

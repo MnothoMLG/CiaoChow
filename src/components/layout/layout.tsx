@@ -17,7 +17,7 @@ export function Margin({
   style,
 }: {
   [key: string]: number | Element | ViewStyle | ReactNode; //could just extend ViewProps
-  style: ViewStyle;
+  style?: ViewStyle;
   children?: ReactNode;
 }) {
   return (
@@ -69,7 +69,7 @@ export function Padding({
   style,
 }: {
   [key: string]: number | ReactNode | ViewStyle;
-  style: ViewStyle;
+  style?: ViewStyle;
   children?: ReactNode;
 }) {
   return (

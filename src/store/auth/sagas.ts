@@ -2,24 +2,28 @@ import {AxiosResponse} from 'axios';
 import {takeLatest, put, call, delay} from 'redux-saga/effects';
 import {client} from '../../api/api';
 import { setToken } from '../../api/tokenData';
+import { setAndShowFeedback } from '../alert/actions';
+import { AlertState } from '../alert/types';
 import { logInError, logInRequest, logInSuccess, registerError, registerRequest, registerSuccess } from './actions';
 import { AuthenticateUserResponse, LoginDataInterface, UserDataInterface } from './types';
 
 export function* registerUser({ payload }: { payload: UserDataInterface; type: string }) {
 
-    console.log("register user payload" , payload)
     try {
       const response: AxiosResponse<AuthenticateUserResponse>= yield call(() => client.post("/api/auth/local/register", payload));
+      yield delay(2000) //just to display the loader
+      if (response.data) { 
 
-        if (response.data) { 
-            console.log(" the data from the response ", response.data)
-
-            yield setToken(response.data.jwt)
-            yield put (registerSuccess(response.data))
-        }
+          yield setToken(response.data.jwt)
+          yield put (registerSuccess(response.data))
+      }
 
     } catch (err) {
-        console.log("an error occured  ====>", err , err.response)
+      yield put (setAndShowFeedback({
+        ...genericErrorPayload,
+        visible: true,
+        message: "An error occured while registering your account.\n Please try again.",
+      }))
       yield put(
         registerError({
           message: err.message,
@@ -31,24 +35,24 @@ export function* registerUser({ payload }: { payload: UserDataInterface; type: s
 
 export function* loginUser({ payload }: { payload: LoginDataInterface; type: string }) {
 
-  console.log("login user payload" , payload);
-
   try {
     const response: AxiosResponse<AuthenticateUserResponse>= yield call(() => client.post("/api/auth/local", payload));
-
-    console.log(" data ====> ", {response})
-
+    yield delay(2000) //just to display the loader
     if (response.data) { 
         console.log(" the data from the response ", response.data)
 
-        yield delay(2000) //just to display the loader
         yield setToken(response.data.jwt)
         yield put (logInSuccess(response.data))
     }
 
   } catch (err) {
 
-      console.log("an error occured  ====>", err , err.response)
+    yield put (setAndShowFeedback({
+      ...genericErrorPayload,
+      visible: true,
+      message: "An error occured while registering your account.\n Please try again.",
+    }));
+  
     yield put(
       logInError({
         message: err.message,
@@ -61,4 +65,13 @@ export function* loginUser({ payload }: { payload: LoginDataInterface; type: str
 export function* watchAuthSagas() {
     yield takeLatest(registerRequest.type, registerUser);
     yield takeLatest(logInRequest.type, loginUser);
+}
+
+const genericErrorPayload : Partial<AlertState> = {
+  title: "Oops",
+  visible: true,
+  right: {
+    label: "Ok",
+    onPress: () => null
+  }
 }

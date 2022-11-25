@@ -18,7 +18,6 @@ const Register = () => {
   return (
     <AuthForm register 
       submit={(values) => {
-        console.log({values})
         dispatch(registerRequest(values as UserDataInterface))
       }} 
     />
