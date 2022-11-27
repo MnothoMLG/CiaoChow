@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, {Component, useState} from 'react';
-import {TextInput, Text, View, TextInputProps} from 'react-native';
+import React, {useState} from 'react';
+import {TextInput, Text, View, TextInputProps, TouchableOpacity} from 'react-native';
 import styles, {InputLabel} from './Styles';
-import {FormikErrors, FormikTouched} from 'formik';
 import { Margin } from '../layout/layout';
+import { EyeInvisible, EyeVisible } from '../../assets';
 
 interface IProps extends TextInputProps {
   style?: Record<string, unknown> | Record<string, unknown>[];
@@ -22,6 +22,7 @@ interface IProps extends TextInputProps {
 const Input = ({
   style = {},
   label,
+  secureTextEntry,
   required,
   error,
   ...props
@@ -31,13 +32,12 @@ const Input = ({
   };
   const [focused, setFocused] = useState(false);
   const [touched, setTouched] = useState(false);
-
+  const [visible, setVisible] = useState(false);
   return (
     <>
       {label && (
         <InputLabel>
-          {label}
-          {required && <InputLabel style={{color: 'red'}}>*</InputLabel>}
+          {label.toLowerCase()}
         </InputLabel>
       )}
       <View style={[styles.container, style, focused && styles.brightBorder]}>
@@ -45,6 +45,7 @@ const Input = ({
           {...props}
           placeholderTextColor={'rgba(0,0,0,0.3)'}
           style={[styles.input]}
+          secureTextEntry={secureTextEntry && !visible}
           placeholder={props.placeholder || ''}
           value={props.value}
           onChangeText={textChanged}
@@ -58,6 +59,10 @@ const Input = ({
             props.onBlur && props.onBlur();
           }}
         />
+
+        {secureTextEntry && <TouchableOpacity onPress={()=> setVisible(old => !old)} style={styles.eye} >
+        {visible ? <EyeVisible /> : <EyeInvisible /> }
+        </TouchableOpacity>}
       </View>
       {error && touched && <Text style={styles.error}>{error}</Text>}
       <Margin mb={14} />

@@ -7,6 +7,7 @@ export default {
     apply: 'Apply',
     email: 'Email',
     password: 'Password',
+    username: 'Username',
     sort: 'Sort',
   },
   loading: {

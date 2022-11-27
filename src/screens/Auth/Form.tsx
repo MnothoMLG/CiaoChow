@@ -23,9 +23,9 @@ const AuthForm : FC<Props> = ({register, submit }) => {
     <Formik
       enableReinitialize
       initialValues={{
-        email: "Mnotho.mlg@gmail.com",
+        email: "",
         username: "",
-        password: "Mnotho123",
+        password: "",
       }}
       onSubmit={() => {
         return;
@@ -45,11 +45,11 @@ const AuthForm : FC<Props> = ({register, submit }) => {
 
       <Padding pl={20} pr={20} style={{flex: 1, width: '100%', alignItems: 'center'}}>
 
-        {register && <Input onChangeText={handleChange('username')} onFocus={()=> setFieldTouched('username')}  error={errors.username} value={values.username} label={"username"} placeholder={"muncher"}  />}
+        {register && <Input onChangeText={handleChange('username')} onFocus={()=> setFieldTouched('username')}  error={errors.username} value={values.username} label={strings.common.username} placeholder={strings.auth.placeholders.name}  />}
 
-        <Input onChangeText={handleChange('email')} onFocus={()=> setFieldTouched('email')} error={errors.email} value={values.email} label={"email"}  placeholder="yourmail@mail.com"  />
+        <Input onChangeText={handleChange('email')} onFocus={()=> setFieldTouched('email')} error={errors.email} value={values.email} label={strings.common.email}   placeholder={strings.auth.placeholders.email}   />
 
-        <Input onChangeText={handleChange('password')} onFocus={()=> setFieldTouched('password')}  error={errors.password} value={values.password}  secureTextEntry  label={"password"}  placeholder={"your password"} />
+        <Input onChangeText={handleChange('password')} onFocus={()=> setFieldTouched('password')}  error={errors.password} value={values.password}  secureTextEntry  label={strings.common.password}   placeholder={strings.auth.placeholders.password}  />
         <Margin mt={8} />
         <AppButton disabled={!isValid} onPress={()=> submit(values)} rounded  fullWidth label={title} />
 

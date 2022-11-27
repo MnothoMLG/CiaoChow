@@ -22,7 +22,7 @@ export const Text: FC<Props> = styled(RnText)`
   flex-wrap: wrap;
   text-align: ${(props: Props) => (props.align ? props.align : 'left')};
   font-family: ${(props: Props) =>
-    `${props.bold ? 'Inter-Bold' : props.thin ? 'Inter-Light' : 'Inter-Regular'}`};
+    `${props.bold ? 'Inter-Bold' : props.thin ? 'Inter-Light' : 'Inter '}`};
   margin-left: ${(props: Props) => `${props.ml || 0}px`};
   margin-right: ${(props: Props) => `${props.mr || 0}px`};
   margin-bottom: ${(props: Props) => `${props.mb || 0}px`};

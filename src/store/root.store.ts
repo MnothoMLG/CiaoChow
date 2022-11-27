@@ -6,7 +6,8 @@ import {configureStore} from '@reduxjs/toolkit';
 import {reducers} from './root.reducer';
 import sagas from './root.saga';
 
-const saveSubsetFilter = createFilter('authReducer', ['onBoarded']);
+//persist only the onBoarded auth reducer field
+const saveSubsetFilter = createFilter('authReducer', ['onBoarded']); 
 const config = {
   key: 'root',
   storage: AsyncStorage,

@@ -65,7 +65,7 @@ const textStyle = StyleSheet.create({
     color: colors.background.primary,
   },
   bold: {
-    fontWeight: "600",
+    fontFamily: "Inter-Med",
   }
 });
 

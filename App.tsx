@@ -30,6 +30,7 @@ const EntryPoint = () => {
     'Inter': require('./src/assets/fonts/Inter-Regular.ttf'),
     'Inter-Bold': require('./src/assets/fonts/Inter-Bold.ttf'),
     'Inter-Thin': require('./src/assets/fonts/Inter-Light.ttf'),
+    'Inter-Med': require('./src/assets/fonts/Inter-Medium.ttf'),
   });
 
   useEffect(()=> {

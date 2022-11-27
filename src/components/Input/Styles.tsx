@@ -13,21 +13,20 @@ export const InputLabel = styled.Text`
 export default StyleSheet.create({
   container: {
     height: 52,
-    display: 'flex',
     flexWrap: 'nowrap',
     flexDirection: 'row',
-    borderRadius: 5,
     alignItems: 'center',
+    borderRadius: 10,
+    padding: 14,
+    backgroundColor: colors.typography.border,
   },
   brightBorder: {
     borderColor: colors.background.secondary,
   },
+  eye: {width: 30, height: 30 , alignItems: 'center', justifyContent: "center" },
   input: {
     height: 46,
     flex: 1,
-    borderRadius: 10,
-    padding: 14,
-    backgroundColor: colors.typography.border,
     fontSize: 12,
     color: '#00000080',
   },
